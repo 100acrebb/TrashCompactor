@@ -1,10 +1,8 @@
 GM.Config = {}
 
-AddCSLuaFile( "config.lua" )
-AddCSLuaFile( "shared.lua" )
+
 
 include( 'config.lua')
-
 include( 'shared.lua')
 
 killicon.AddFont("kill", "TargetID", "has killed", Color(255,255,255,255))
@@ -137,6 +135,7 @@ function DrawHud()
 				draw.DrawText("  You are not in the Trashman Queue. \n Open the Scoreboard or type !queue \n to add yourself." , "HudHintTextLarge", ScrW() / 2, ScrH() / 1.175, Fade(Color(255,255,255,255),GAMEMODE.Config.TrashmanColor,ColorLerp,255), TEXT_ALIGN_CENTER )
 			end
 		end
+		
 		
 		--Draws Amount of Frozen Objects
 		if(LocalPlayer():IsTrashman()) then
@@ -658,7 +657,7 @@ local Menu
 function GM:OpenContextMenu(ply)
 	Menu = DermaMenu()
 	
-	if(LocalPlayer():IsAdmin() || LocalPlayer():SteamID() == "STEAM_0:1:17536040") then
+	if(LocalPlayer():IsAdmin()) then
 
 		local settrashman = Menu:AddOption("Force Trashman")
 		settrashman:SetIcon( "icon16/user_go.png" )
